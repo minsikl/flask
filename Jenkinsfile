@@ -4,6 +4,7 @@ pipeline {
         stage ('Build') {
             steps {
                  echo 'Build'
+                 buildApp()
             }
         }
         stage ('Test') {
@@ -12,4 +13,8 @@ pipeline {
             }
         }
     }
+}
+
+def buildApp() {
+    def appImage = docker.build("minsikl/jenkins-test:${BUILD_NUMBER}")
 }
